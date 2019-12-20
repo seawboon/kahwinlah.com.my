@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('check-queue', function () {
+    Mail::to('seawboon@1leaf.com.my')->send(new TestMail());
+    return 'WOrking';
+});
