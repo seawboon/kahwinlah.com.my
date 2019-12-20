@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('check-queue', function () {
-    Mail::to('seawboon@1leaf.com.my')->send(new TestMail);
+    Mail::to('seawboon.works@gmail.com')->send(new TestMail());
     return 'WOrking';
 });
