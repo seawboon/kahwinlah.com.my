@@ -17,7 +17,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/github-hooks', function(){
+/*Route::post('/github-hooks', function(){
   Artisan::call('git:deploy');
   exit;
+});*/
+Route::post('/github-hooks', function () {
+  $path = base_path();
+  $token = 'token';
+  $json = json_decode(file_get_contents('php://input'), true);
+
+  if (empty($json['token']) || $json['token'] !== $token) {
+      exit('error request');
+  }
+
+  $cmd = "cd $path && git pull";
+  shell_exec($cmd);
 });
