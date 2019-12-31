@@ -21,4 +21,8 @@ Route::get('check-queue', function () {
 });
 */
 
-Route::get('check-queue', 'TestController@mail');
+//Route::get('check-queue', 'TestController@mail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
